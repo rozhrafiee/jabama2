@@ -1,1 +1,39 @@
 /db.sqlite3
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environment
+venv/
+ENV/
+env/
+
+# Django
+db.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+media/
+staticfiles/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# mypy
+.mypy_cache/
+
+# Python coverage
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+nosetests.xml
+test_*.xml
