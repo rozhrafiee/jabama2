@@ -1,7 +1,7 @@
 # user/views.py
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated
-from .models import Renter
+from .models import Renter, Wallet
 from .serializers import RenterSerializer, RenterCreateSerializer, WalletUpdateSerializer
 from django.contrib.auth.models import User
 from user.permissions import IsRenter, IsSuperUser
@@ -9,12 +9,12 @@ from user.permissions import IsRenter, IsSuperUser
 class RenterListView(ListAPIView):
     queryset = Renter.objects.all()
     serializer_class = RenterSerializer
-    permission_classes = [IsSuperUser]  # Only admin can list all renters
+    permission_classes = [IsSuperUser] 
 
 class RenterDetailView(RetrieveAPIView):
     queryset = Renter.objects.all()
     serializer_class = RenterSerializer
-    permission_classes = [IsAuthenticated, IsRenter]  # Renter can view their own details
+    permission_classes = [IsAuthenticated, IsRenter]  
 
 class RenterCreateView(CreateAPIView):
     queryset = Renter.objects.all()
@@ -22,7 +22,7 @@ class RenterCreateView(CreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        user = self.request.user  # Assuming the user is authenticated
+        user = self.request.user  
         serializer.save(user=user)
 
 class WalletUpdateView(UpdateAPIView):
@@ -31,4 +31,6 @@ class WalletUpdateView(UpdateAPIView):
     permission_classes = [IsAuthenticated, IsRenter]
 
     def get_object(self):
-        return self.request.user.renter  # Update the authenticated user's wallet
+        return self.request.user.renter 
+
+

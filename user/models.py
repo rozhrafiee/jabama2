@@ -8,3 +8,6 @@ class Renter(models.Model):
 
     def __str__(self):
         return f"{self.user.username}"
+class Wallet(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    amount = models.PositiveBigIntegerField(default=0)

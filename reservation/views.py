@@ -133,7 +133,7 @@ class PlaceDelete(DestroyAPIView):
     permission_classes = [IsAuthenticated, IsOwner]
 
 
-# Reservation Views
+
 class ReservationView(ListAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
@@ -172,4 +172,7 @@ class ReservationDelete(DestroyAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
     permission_classes = [IsAuthenticated]
+
+
+
 
